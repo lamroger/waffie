@@ -1,0 +1,76 @@
+{
+  "name": "waffie",
+  "version": "0.0.0",
+  "description": "LLM prompt manager",
+  "author": "Roger Lam",
+  "bin": {
+    "waffie": "./bin/run"
+  },
+  "homepage": "https://github.com/lamroger/waffie",
+  "license": "GPL-3",
+  "main": "dist/index.js",
+  "repository": "lamroger/waffie",
+  "files": [
+    "/bin",
+    "/dist",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "dependencies": {
+    "@oclif/core": "^2",
+    "@oclif/plugin-help": "^5",
+    "@oclif/plugin-plugins": "^2.4.7",
+    "csv-parse": "^5.4.0",
+    "dotenv": "^16.3.1",
+    "openai": "^3.3.0",
+    "yaml": "^2.3.1"
+  },
+  "devDependencies": {
+    "@oclif/test": "^2.3.31",
+    "@types/chai": "^4",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.18.39",
+    "chai": "^4",
+    "eslint": "^7.32.0",
+    "eslint-config-oclif": "^4",
+    "eslint-config-oclif-typescript": "^1.0.3",
+    "mocha": "^9",
+    "oclif": "^3",
+    "shx": "^0.3.3",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.6.0",
+    "typescript": "^4.9.5"
+  },
+  "oclif": {
+    "bin": "waffie",
+    "dirname": "waffie",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-plugins"
+    ],
+    "topicSeparator": " ",
+    "topics": {
+      "hello": {
+        "description": "Say hello to the world and others"
+      }
+    }
+  },
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint . --ext .ts --config .eslintrc",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "yarn lint",
+    "prepack": "yarn build && oclif manifest && oclif readme",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "bugs": "https://github.com/lamroger/waffie/issues",
+  "keywords": [
+    "oclif"
+  ],
+  "types": "dist/index.d.ts"
+}

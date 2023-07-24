@@ -1,0 +1,10 @@
+version: 0.1
+
+actions:
+  sentiment-analysis:
+    command: text-completion
+    providers:
+      - openai
+      # - anthropic
+    prompt: You will be provided with a tweet, and your task is to classify its sentiment as positive, neutral, or negative.
+    test_directory: test
