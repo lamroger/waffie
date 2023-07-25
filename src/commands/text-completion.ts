@@ -41,7 +41,7 @@ export default class TextCompletion extends Command {
 
     const client = this.providerToClient(flags.provider)
 
-    const result = await client.textCompletion('gpt-3.5-turbo', 0, 'can you write me a 10 line poem to hype up a internal medicine intern')
+    const result = await client.textCompletion('gpt-3.5-turbo', 0, '', 'can you write me a 10 line poem to hype up a internal medicine intern')
 
     console.log(result)
   }
