@@ -13,12 +13,18 @@ export class LLM extends LLMBase {
     this.client = new OpenAIApi(configuration)
   }
 
-  async textCompletion(model: string, temperature: number, message: string): Promise<string> {
+  async textCompletion(model: string, temperature: number, prompt: string, message: string): Promise<string> {
     return new Promise((resolve, _reject) => {
       this.client.createChatCompletion({
         model,
         temperature,
-        messages: [{ role: 'user', content: message }],
+        messages: [
+          {
+            role: 'system',
+            content: prompt,
+          },
+          { role: 'user', content: message },
+        ],
       }).then(chatCompletion => {
         console.log(chatCompletion.data.choices[0].message)
         resolve(chatCompletion.data.choices[0].message?.content || 'error')
