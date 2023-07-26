@@ -4,6 +4,7 @@ import { readFileSync, createReadStream, readdir } from 'node:fs'
 import { LLMBase } from '../providers/base/llm-base'
 import { LLM } from '../providers/openai/llm'
 import { parse as csvParse } from 'csv-parse'
+import { createLanguageModel, createJsonTranslator, processRequests } from 'typechat'
 import path = require('node:path')
 
 export default class File extends Command {
@@ -33,6 +34,10 @@ export default class File extends Command {
   }
 
   processFile = async (filePath: string, prompt: string, client: LLMBase): Promise<number[]> => {
+    const model = createLanguageModel(process.env)
+    const schema = readFileSync(path.join(filePath, '../..', 'schema.ts'), 'utf8')
+    const translator = createJsonTranslator(model, schema, 'SentimentResponse')
+
     const readStream = createReadStream(filePath)
     // eslint-disable-next-line camelcase
     .pipe(csvParse({ delimiter: ',', from_line: 2 }))
@@ -41,12 +46,17 @@ export default class File extends Command {
     let passed = 0
     for await (const row of readStream) {
       try {
-        const processedRow = await client.textCompletion('gpt-3.5-turbo', 0, prompt, row[0].toString())
+        const response = await translator.translate(row[0].toString())
+        if (response.success) {
+          const data = <{ result: string }>response.data
+          count += 1
+          console.log({ processedRow: data.result.trim().toLowerCase(), expected: row[1].trim().toLowerCase() })
+          if (data.result.trim().toLowerCase() === row[1].trim().toLowerCase()) passed += 1
+        } else {
+          console.error(response.message)
+        }
 
-        count += 1
-        // Try regex for the expected values instead?
-        console.log({ processedRow: processedRow.trim().toLowerCase(), expected: row[1].trim().toLowerCase() })
-        if (processedRow.trim().toLowerCase() === row[1].trim().toLowerCase()) passed += 1
+        // const processedRow = await client.textCompletion('gpt-3.5-turbo', 0, prompt, row[0].toString())
       } catch (error) {
         console.error('An error occurred while processing the row:', error)
       }
