@@ -6,7 +6,7 @@ Waffie CLI
 * [Commands](#commands)
 <!-- tocstop -->
 
-# Overview
+# Why
 LLMs are statistical alien interns. They can pattern match and reach conclusions but
 don't tell you how confident they are in their answers. Maybe today they're wrong 2%
 of the time. In a month, they learn new things and start becoming wrong 5% of the time.
