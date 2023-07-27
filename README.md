@@ -1,16 +1,30 @@
-oclif-hello-world
+Waffie CLI
 =================
-
-oclif example Hello World CLI
-
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![CircleCI](https://circleci.com/gh/oclif/hello-world/tree/main.svg?style=shield)](https://circleci.com/gh/oclif/hello-world/tree/main)
-[![GitHub license](https://img.shields.io/github/license/oclif/hello-world)](https://github.com/oclif/hello-world/blob/main/LICENSE)
 
 <!-- toc -->
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
+
+# Overview
+LLMs are statistical alien interns. They can pattern match and reach conclusions but
+don't tell you how confident they are in their answers. Maybe today they're wrong 2%
+of the time. In a month, they learn new things and start becoming wrong 5% of the time.
+Now the planet of Anthropic's interns are better at sentiment analysis.
+
+Concepts like loss calculation and model drift already exist in traditional machine learning
+settings. The Waffie CLI is built to help make those concepts accessible to software
+developers leveraging LLM APIs to make the best out-of-this-world solutions possible.
+
+## How
+We leverage prompt engineering and [TypeChat](https://github.com/microsoft/TypeChat/) to
+direct the LLM into responding in a machine-readable way.
+
+Configuration is read through a Waffiefile where you can specify test files, API providers,
+and model versions.
+
+Results are returned so you can compare across multiple models and time.
+
 # Usage
 <!-- usage -->
 ```sh-session
@@ -25,20 +39,13 @@ USAGE
 ...
 ```
 <!-- usagestop -->
+
+
 # Commands
 <!-- commands -->
 * [`waffie hello PERSON`](#waffie-hello-person)
 * [`waffie hello world`](#waffie-hello-world)
 * [`waffie help [COMMANDS]`](#waffie-help-commands)
-* [`waffie plugins`](#waffie-plugins)
-* [`waffie plugins:install PLUGIN...`](#waffie-pluginsinstall-plugin)
-* [`waffie plugins:inspect PLUGIN...`](#waffie-pluginsinspect-plugin)
-* [`waffie plugins:install PLUGIN...`](#waffie-pluginsinstall-plugin-1)
-* [`waffie plugins:link PLUGIN`](#waffie-pluginslink-plugin)
-* [`waffie plugins:uninstall PLUGIN...`](#waffie-pluginsuninstall-plugin)
-* [`waffie plugins:uninstall PLUGIN...`](#waffie-pluginsuninstall-plugin-1)
-* [`waffie plugins:uninstall PLUGIN...`](#waffie-pluginsuninstall-plugin-2)
-* [`waffie plugins update`](#waffie-plugins-update)
 
 ## `waffie hello PERSON`
 
@@ -96,240 +103,5 @@ FLAGS
 
 DESCRIPTION
   Display help for waffie.
-```
-
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.2.14/src/commands/help.ts)_
-
-## `waffie plugins`
-
-List installed plugins.
-
-```
-USAGE
-  $ waffie plugins [--core]
-
-FLAGS
-  --core  Show core plugins.
-
-DESCRIPTION
-  List installed plugins.
-
-EXAMPLES
-  $ waffie plugins
-```
-
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.4.7/src/commands/plugins/index.ts)_
-
-## `waffie plugins:install PLUGIN...`
-
-Installs a plugin into the CLI.
-
-```
-USAGE
-  $ waffie plugins:install PLUGIN...
-
-ARGUMENTS
-  PLUGIN  Plugin to install.
-
-FLAGS
-  -f, --force    Run yarn install with force flag.
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Installs a plugin into the CLI.
-  Can be installed from npm or a git url.
-
-  Installation of a user-installed plugin will override a core plugin.
-
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
-  the CLI without the need to patch and update the whole CLI.
-
-
-ALIASES
-  $ waffie plugins add
-
-EXAMPLES
-  $ waffie plugins:install myplugin 
-
-  $ waffie plugins:install https://github.com/someuser/someplugin
-
-  $ waffie plugins:install someuser/someplugin
-```
-
-## `waffie plugins:inspect PLUGIN...`
-
-Displays installation properties of a plugin.
-
-```
-USAGE
-  $ waffie plugins:inspect PLUGIN...
-
-ARGUMENTS
-  PLUGIN  [default: .] Plugin to inspect.
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-GLOBAL FLAGS
-  --json  Format output as json.
-
-DESCRIPTION
-  Displays installation properties of a plugin.
-
-EXAMPLES
-  $ waffie plugins:inspect myplugin
-```
-
-## `waffie plugins:install PLUGIN...`
-
-Installs a plugin into the CLI.
-
-```
-USAGE
-  $ waffie plugins:install PLUGIN...
-
-ARGUMENTS
-  PLUGIN  Plugin to install.
-
-FLAGS
-  -f, --force    Run yarn install with force flag.
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Installs a plugin into the CLI.
-  Can be installed from npm or a git url.
-
-  Installation of a user-installed plugin will override a core plugin.
-
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
-  the CLI without the need to patch and update the whole CLI.
-
-
-ALIASES
-  $ waffie plugins add
-
-EXAMPLES
-  $ waffie plugins:install myplugin 
-
-  $ waffie plugins:install https://github.com/someuser/someplugin
-
-  $ waffie plugins:install someuser/someplugin
-```
-
-## `waffie plugins:link PLUGIN`
-
-Links a plugin into the CLI for development.
-
-```
-USAGE
-  $ waffie plugins:link PLUGIN
-
-ARGUMENTS
-  PATH  [default: .] path to plugin
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Links a plugin into the CLI for development.
-  Installation of a linked plugin will override a user-installed or core plugin.
-
-  e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello'
-  command will override the user-installed or core plugin implementation. This is useful for development work.
-
-
-EXAMPLES
-  $ waffie plugins:link myplugin
-```
-
-## `waffie plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ waffie plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ waffie plugins unlink
-  $ waffie plugins remove
-```
-
-## `waffie plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ waffie plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ waffie plugins unlink
-  $ waffie plugins remove
-```
-
-## `waffie plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ waffie plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ waffie plugins unlink
-  $ waffie plugins remove
-```
-
-## `waffie plugins update`
-
-Update installed plugins.
-
-```
-USAGE
-  $ waffie plugins update [-h] [-v]
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Update installed plugins.
 ```
 <!-- commandsstop -->
