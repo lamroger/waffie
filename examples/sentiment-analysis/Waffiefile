@@ -6,5 +6,11 @@ actions:
     providers:
       - openai
       # - anthropic
-    prompt: You will be provided with a tweet, and your task is to classify its sentiment as positive, neutral, or negative.
+    prompt: >
+      You will be provided with a tweet, and your task is to classify its sentiment as positive, neutral, or negative.
+      The JSON should be compatible with the TypeScript type Response from the following:
+
+      interface Response {
+          data: Array<{ sentiment: "positive" | "negative" | "neutral" }>;
+      }
     test_directory: test
