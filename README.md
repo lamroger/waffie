@@ -12,9 +12,7 @@ don't tell you how confident they are in their answers. Maybe today they're wron
 of the time. In a month, they learn new things and start becoming wrong 5% of the time.
 Now the planet of Anthropic's interns are better at sentiment analysis.
 
-Concepts like loss calculation and model drift already exist in traditional machine learning
-settings. The Waffie CLI is built to help make those concepts accessible to software
-developers leveraging LLM APIs to make the best out-of-this-world solutions possible.
+Concepts like loss calculation and model drift already exist in traditional machine learning settings. The Waffie CLI is built to help make those concepts accessible to software developers leveraging LLM APIs, enabling them to create the best out-of-this-world solutions possible.
 
 ## How
 We leverage prompt engineering and [TypeChat](https://github.com/microsoft/TypeChat/) to
