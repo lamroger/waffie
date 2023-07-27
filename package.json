@@ -7,7 +7,7 @@
     "waffie": "./bin/run"
   },
   "homepage": "https://github.com/lamroger/waffie",
-  "license": "GPL-3",
+  "license": "GPL-3.0-only",
   "main": "dist/index.js",
   "repository": "lamroger/waffie",
   "files": [
