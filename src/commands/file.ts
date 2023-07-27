@@ -4,7 +4,7 @@ import { readFileSync, createReadStream, readdir } from 'node:fs'
 import { LLMBase } from '../providers/base/llm-base'
 import { LLM } from '../providers/openai/llm'
 import { parse as csvParse } from 'csv-parse'
-import { createLanguageModel, createJsonTranslator, processRequests } from 'typechat'
+import { createLanguageModel, createJsonTranslator } from 'typechat'
 import path = require('node:path')
 
 export default class File extends Command {
