@@ -26,7 +26,6 @@ export class LLM extends LLMBase {
           { role: 'user', content: message },
         ],
       }).then(chatCompletion => {
-        console.log(chatCompletion.data.choices[0].message)
         resolve(chatCompletion.data.choices[0].message?.content || 'error')
       }).catch(error => {
         // Handle any potential errors that might occur during the Promise execution
