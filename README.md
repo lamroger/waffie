@@ -55,50 +55,10 @@ DESCRIPTION
 
 EXAMPLES
   $ waffie file examples/sentiment-analysis/Waffiefile
-  Testing openai:
-  { role: 'assistant', content: '{"result": "positive"}' }
-  { processedRow: { result: 'positive' }, expected: 'positive' }
-  { role: 'assistant', content: '{"result": "neutral"}' }
-  { processedRow: { result: 'neutral' }, expected: 'neutral' }
-  { role: 'assistant', content: '{"result": "negative"}' }
-  { processedRow: { result: 'negative' }, expected: 'negative' }
-  { role: 'assistant', content: '{"result": "positive"}' }
-  { processedRow: { result: 'positive' }, expected: 'positive' }
-  { role: 'assistant', content: '{"result": "neutral"}' }
-  { processedRow: { result: 'neutral' }, expected: 'neutral' }
-  { role: 'assistant', content: '{"result": "negative"}' }
-  { processedRow: { result: 'negative' }, expected: 'negative' }
-  { role: 'assistant', content: '{"result": "positive"}' }
-  { processedRow: { result: 'positive' }, expected: 'positive' }
-  { role: 'assistant', content: '{"result": "neutral"}' }
-  { processedRow: { result: 'neutral' }, expected: 'neutral' }
-  { role: 'assistant', content: '{"result": "negative"}' }
-  { processedRow: { result: 'negative' }, expected: 'negative' }
-  { role: 'assistant', content: '{"result": "positive"}' }
-  { processedRow: { result: 'positive' }, expected: 'positive' }
-  { role: 'assistant', content: '{"result": "positive"}' }
-  { processedRow: { result: 'positive' }, expected: 'positive' }
-  { role: 'assistant', content: '{"result": "neutral"}' }
-  { processedRow: { result: 'neutral' }, expected: 'neutral' }
-  { role: 'assistant', content: '{"result": "negative"}' }
-  { processedRow: { result: 'negative' }, expected: 'negative' }
-  { role: 'assistant', content: '{"result": "positive"}' }
-  { processedRow: { result: 'positive' }, expected: 'positive' }
-  { role: 'assistant', content: '{"result": "neutral"}' }
-  { processedRow: { result: 'neutral' }, expected: 'neutral' }
-  { role: 'assistant', content: '{"result": "negative"}' }
-  { processedRow: { result: 'negative' }, expected: 'negative' }
-  { role: 'assistant', content: '{"result": "positive"}' }
-  { processedRow: { result: 'positive' }, expected: 'positive' }
-  { role: 'assistant', content: '{"result": "neutral"}' }
-  { processedRow: { result: 'neutral' }, expected: 'neutral' }
-  { role: 'assistant', content: '{"result": "negative"}' }
-  { processedRow: { result: 'negative' }, expected: 'negative' }
-  { role: 'assistant', content: '{"result": "positive"}' }
-  { processedRow: { result: 'positive' }, expected: 'positive' }
-  { role: 'assistant', content: '{"result": "neutral"}' }
-  { processedRow: { result: 'neutral' }, expected: 'neutral' }
-  { role: 'assistant', content: '{"result": "negative"}' }
-  { processedRow: { result: 'negative' }, expected: 'negative' }
-  Results for waffie/examples/sentiment-analysis/test/feedback.csv: 22/22
+  {
+    file: '/Users/rogerlam/waffie/examples/sentiment-analysis/test/feedback.csv',
+    count: 22,
+    passed: 22,
+    allPassed: true
+  }
 ```

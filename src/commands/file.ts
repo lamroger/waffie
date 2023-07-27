@@ -4,7 +4,6 @@ import { readFileSync, createReadStream, readdir } from 'node:fs'
 import { LLMBase } from '../providers/base/llm-base'
 import { LLM } from '../providers/openai/llm'
 import { parse as csvParse } from 'csv-parse'
-import { createLanguageModel, createJsonTranslator } from 'typechat'
 import path = require('node:path')
 
 export default class File extends Command {
@@ -40,12 +39,12 @@ export default class File extends Command {
     let count = 0
     let passed = 0
     for await (const row of readStream) {
+      count += 1
+
       try {
         const rawResponse = await client.textCompletion('gpt-3.5-turbo', 0, prompt, row[0].toString())
 
         const response = JSON.parse(rawResponse)
-        count += 1
-        console.log({ processedRow: response, expected: row[1].trim().toLowerCase() })
         if (response.result.trim().toLowerCase() === row[1].trim().toLowerCase()) passed += 1
       } catch (error) {
         console.error('An error occurred while processing the row:', error)
@@ -58,7 +57,14 @@ export default class File extends Command {
   testFile = async (filePath: string, client: LLMBase, prompt: string): Promise<boolean> => {
     const [count, passed] = await this.processFile(filePath, prompt, client)
 
-    console.log(`Results for ${filePath}: ${passed}/${count}`)
+    const results = {
+      file: filePath,
+      count,
+      passed,
+      allPassed: count === passed,
+    }
+
+    console.log(results)
     return count === passed
   }
 
@@ -78,8 +84,6 @@ export default class File extends Command {
 
         // Iterate through files in test_directory relative to Waffiefile
         const testDirectoryPath = path.join(process.cwd(), args.filePath, '..', testDirectory)
-
-        console.log(`Testing ${provider}:`)
 
         readdir(testDirectoryPath, async (err, files) => {
           if (err) {
