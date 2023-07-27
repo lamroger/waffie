@@ -11,6 +11,6 @@ actions:
       The JSON should be compatible with the TypeScript type Response from the following:
 
       interface Response {
-          data: Array<{ sentiment: "positive" | "negative" | "neutral" }>;
+          result: "positive" | "negative" | "neutral" };
       }
     test_directory: test
