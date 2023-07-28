@@ -41,9 +41,49 @@ USAGE
 
 You'll need to set the `OPENAI_API_KEY` environment variable with your OpenAI API key.
 
-If you cloned this repo, you can run one of our examples like this
+If you cloned this repo, you can run one of our examples like this:
 ```sh-session
 $ waffie file examples/sentiment-analysis/Waffiefile
+
+{ processedRow: 'positive', expected: 'positive' }
+{ processedRow: 'neutral', expected: 'neutral' }
+...
+{ processedRow: 'negative', expected: 'negative' }
+{
+  file: '/Users/rogerlam/waffie/examples/sentiment-analysis/test/feedback.csv',
+  count: 22,
+  passed: 22,
+  allPassed: true
+}
+```
+
+Example Waffiefile:
+```yml
+version: 0.1
+
+actions:
+  sentiment-analysis:
+    command: text-completion
+    providers:
+      - openai
+      # - anthropic
+    prompt: >
+      You will be provided with a tweet, and your task is to classify its sentiment as positive, neutral, or negative.
+      The JSON should be compatible with the TypeScript type Response from the following:
+
+      interface Response {
+          result: "positive" | "negative" | "neutral" };
+      }
+    test_directory: test
+```
+
+Example test csv:
+```CSV
+Customer Feedback, Sentiment
+"I love your product, it's amazing!", positive
+"The service was okay, nothing special.", neutral
+...
+"I feel indifferent about the whole thing.", neutral
 ```
 
 
