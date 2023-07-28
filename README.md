@@ -2,6 +2,7 @@ Waffie CLI
 =================
 
 <!-- toc -->
+* [Why](#why)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
@@ -27,13 +28,74 @@ Results are returned so you can compare across multiple models and time.
 <!-- usage -->
 ```sh-session
 $ npm install -g waffie
-$ waffie file examples/sentiment-analysis/Waffiefile
+$ waffie COMMAND
+running command...
+$ waffie (--version)
+waffie/0.1.0 darwin-x64 node-v18.9.0
+$ waffie --help [COMMAND]
+USAGE
+  $ waffie COMMAND
+...
 ```
 <!-- usagestop -->
+
+You'll need to set the `OPENAI_API_KEY` environment variable with your OpenAI API key.
+
+If you cloned this repo, you can run one of our examples like this
+```sh-session
+$ waffie file examples/sentiment-analysis/Waffiefile
+```
 
 
 # Commands
 <!-- commands -->
+* [`waffie file FILEPATH`](#waffie-file-filepath)
+* [`waffie help [COMMANDS]`](#waffie-help-commands)
+
+## `waffie file FILEPATH`
+
+Runs automated tests using the provided Waffiefile
+
+```
+USAGE
+  $ waffie file FILEPATH [-n <value>] [-f]
+
+ARGUMENTS
+  FILEPATH  Path to Waffiefile
+
+FLAGS
+  -f, --force
+  -n, --name=<value>  name to print
+
+DESCRIPTION
+  Runs automated tests using the provided Waffiefile
+
+EXAMPLES
+  $ waffie file
+```
+
+_See code: [dist/commands/file.ts](https://github.com/lamroger/waffie/blob/v0.1.0/dist/commands/file.ts)_
+
+## `waffie help [COMMANDS]`
+
+Display help for waffie.
+
+```
+USAGE
+  $ waffie help [COMMANDS] [-n]
+
+ARGUMENTS
+  COMMANDS  Command to show help for.
+
+FLAGS
+  -n, --nested-commands  Include all nested commands in the output.
+
+DESCRIPTION
+  Display help for waffie.
+```
+
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.2.14/src/commands/help.ts)_
+<!-- commandsstop -->
 * [`waffie file WAFFIEFILE`](#waffie-file-waffiefile)
 * [`waffie help [COMMANDS]`](#waffie-help-commands)
 
