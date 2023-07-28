@@ -1,6 +1,6 @@
 {
   "name": "waffie",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "LLM prompt manager",
   "author": "Roger Lam",
   "bin": {
@@ -46,8 +46,7 @@
     "dirname": "waffie",
     "commands": "./dist/commands",
     "plugins": [
-      "@oclif/plugin-help",
-      "@oclif/plugin-plugins"
+      "@oclif/plugin-help"
     ],
     "topicSeparator": " ",
     "topics": {
