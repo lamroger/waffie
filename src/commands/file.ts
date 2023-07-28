@@ -45,7 +45,10 @@ export default class File extends Command {
         const rawResponse = await client.textCompletion('gpt-3.5-turbo', 0, prompt, row[0].toString())
 
         const response = JSON.parse(rawResponse)
-        if (response.result.trim().toLowerCase() === row[1].trim().toLowerCase()) passed += 1
+        const processedRow = response.result.trim().toLowerCase()
+        const expected = row[1].trim().toLowerCase()
+        console.log({ processedRow, expected })
+        if (processedRow === expected) passed += 1
       } catch (error) {
         console.error('An error occurred while processing the row:', error)
       }
